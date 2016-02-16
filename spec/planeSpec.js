@@ -3,7 +3,7 @@ describe("Plane", function(){
   var plane, airport;
 
   beforeEach(function(){
-    airport = {};
+    airport = new Airport;
     plane = new Plane();
   });
 
@@ -30,12 +30,15 @@ describe("Plane", function(){
       expect(plane.isFlying).toEqual(true);
     });
 
-    xit("taking off changes flight status ",function(){
-      plane.isFlying = false;
-      plane.takeOff;
-      expect(plane.isFlying).toEqual(true);
+    it("landing changes flight status", function() {
+      plane.land(airport);
+      expect(plane.isFlying).toEqual(false)
     });
 
+    it("cannont land if already at airport", function() {
+      plane.land(airport)
+      expect(function(){plane.land(airport);}).toThrow("Plane has already landed")
+    });
   });
 
 });

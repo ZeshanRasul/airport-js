@@ -18,13 +18,15 @@ Airport.prototype.land = function(plane) {
 
 Airport.prototype.takeOff = function(plane) {
   if (this.weather.isStorm()){
-    throw 'cannot takeoff in a storm';
+   throw 'cannot takeoff in a storm';
   };
   if (this.planes.indexOf(plane) === -1){
-    throw 'Plane not in airport'
+   throw 'Plane not in airport'
   };
   this.planes.splice(this.planes.indexOf(plane), 1);
 };
+
+
 
 Airport.prototype.changeCapacity = function(newCapacity) {
   if (this.planes.length > newCapacity){
